@@ -28,12 +28,12 @@ public class GUI extends JFrame implements ActionListener, MouseListener, MouseM
        	setTitle("Solitaire");
        	setSize(900,700);
        	setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.getContentPane().setLayout(new BorderLayout());
-		getContentPane().setComponentOrientation(          java.awt.ComponentOrientation.RIGHT_TO_LEFT);
+		this.getContentPane().setLayout(new GridBagLayout());
+		getContentPane().setComponentOrientation(java.awt.ComponentOrientation.RIGHT_TO_LEFT);
 
        
     //    this supplies the background
-	// CURRENTLY BACKGROUND CAUSES ERRORS!!!!!!!!!!!!!!!!!!
+	// CURRENTLY THE BACKGROUND CAUSES ERRORS!!!!!!!!!!!!!!!!!!
     //    try {
 	// 	System.out.println(getClass().toString());
 	// 	ImageIcon backImage = new ImageIcon();
@@ -55,11 +55,18 @@ public class GUI extends JFrame implements ActionListener, MouseListener, MouseM
       // System.out.println(card);
 	  JPanel newPanel = new JPanel();
 	  card.setPreferredSize(new Dimension(200, 200));
-	  newPanel.add(card);
+	  //newPanel.add(card);
 	  newPanel.setPreferredSize(new Dimension(200, 200));
 	  newPanel.setSize(200, 200);
 	  newPanel.setBorder(BorderFactory.createMatteBorder(2, 2, 2,2, Color.BLUE ));
-       this.add(newPanel, BorderLayout.EAST);    
+	  GridBagConstraints constraints = new GridBagConstraints();
+	  GridBagConstraints c = new GridBagConstraints();
+	  c.fill = GridBagConstraints.HORIZONTAL;
+	  c.gridx = 0;
+	  c.gridy = 0;
+	  c.gridwidth = 1;
+	  c.gridheight = 2;
+    this.add(newPanel, c);    
 
         this.setVisible(true);
     }
