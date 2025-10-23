@@ -28,8 +28,8 @@ public class GUI extends JFrame implements ActionListener, MouseListener, MouseM
        	setTitle("Solitaire");
        	setSize(900,700);
        	setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.getContentPane().setLayout(new GridBagLayout());
-		getContentPane().setComponentOrientation(java.awt.ComponentOrientation.RIGHT_TO_LEFT);
+		this.getContentPane().setLayout(new GridLayout(5,5,5,5));
+		//getContentPane().setComponentOrientation(java.awt.ComponentOrientation.RIGHT_TO_LEFT);
 
        
     //    this supplies the background
@@ -51,22 +51,26 @@ public class GUI extends JFrame implements ActionListener, MouseListener, MouseM
         */
 
 	   //Card is a custom JComponent
-       Card card = new Card(2, Card.Suit.Diamonds);
-      // System.out.println(card);
-	  JPanel newPanel = new JPanel();
-	  card.setPreferredSize(new Dimension(200, 200));
+    //    Card card = new Card(2, Card.Suit.Diamonds);
+    //   // System.out.println(card);
+	//   JPanel newPanel = new JPanel();
+	//   card.setPreferredSize(new Dimension(200, 200));
 	  //newPanel.add(card);
-	  newPanel.setPreferredSize(new Dimension(200, 200));
-	  newPanel.setSize(200, 200);
-	  newPanel.setBorder(BorderFactory.createMatteBorder(2, 2, 2,2, Color.BLUE ));
-	  GridBagConstraints constraints = new GridBagConstraints();
-	  GridBagConstraints c = new GridBagConstraints();
-	  c.fill = GridBagConstraints.HORIZONTAL;
-	  c.gridx = 0;
-	  c.gridy = 0;
-	  c.gridwidth = 1;
-	  c.gridheight = 2;
-    this.add(newPanel, c);    
+	//   newPanel.setPreferredSize(new Dimension(200, 200));
+	//   newPanel.setSize(200, 200);
+	//   newPanel.setBorder(BorderFactory.createMatteBorder(2, 2, 2,2, Color.BLUE ));
+
+
+	JButton button1 = new JButton("Button 1");
+	JButton button2 = new JButton("Button 2");
+	JButton button3 = new JButton("Button 3");
+	JButton button4 = new JButton("Button 4");
+	JButton button5 = new JButton("Button 5");
+    this.add(button1);    
+	this.add(button2);    
+	this.add(button3);    
+	this.add(button4);    
+	this.add(button5);    
 
         this.setVisible(true);
     }
