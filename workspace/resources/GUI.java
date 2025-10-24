@@ -16,33 +16,35 @@ import java.net.URL;
 
 public class GUI extends JFrame implements ActionListener, MouseListener, MouseMotionListener{
 
-	// What game the GUI is apart of 
+	// What game the GUI is apart of:
 	Solitaire game;
 
 	// Constructor for a GUI
 	public GUI(Solitaire game){
 		// a GUI IS A J FRAME! All this info is something you would change of a JFrame, but here we do it as a GUI which has set settings
-	   this.game= game;
+		this.game= game;
 
         //Create and set up the window.
-       	setTitle("Solitaire");
+       	setTitle("Game");
        	setSize(900,700);
+		getContentPane().setLayout(new FlowLayout());
        	setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.getContentPane().setLayout(new GridLayout(5,5,5,5));
+		
+		
 		//getContentPane().setComponentOrientation(java.awt.ComponentOrientation.RIGHT_TO_LEFT);
 
        
     //    this supplies the background
 	// CURRENTLY THE BACKGROUND CAUSES ERRORS!!!!!!!!!!!!!!!!!!
-    //    try {
-	// 	System.out.println(getClass().toString());
-	// 	ImageIcon backImage = new ImageIcon();
-	// 	Image blackImg = ImageIO.read(getClass().getResource("background.jpg"));
-	// 	setContentPane(new ImagePanel(blackImg));
+       try {
+		System.out.println(getClass().toString());
+		ImageIcon backImage = new ImageIcon();
+		Image blackImg = ImageIO.read(getClass().getResource("background.jpg"));
+		setContentPane(new ImagePanel(blackImg));
 
-    //    }catch(IOException e) {
-    // 	   e.printStackTrace();
-    //    }
+       }catch(IOException e) {
+    	   e.printStackTrace();
+       }
        
        /*******
         * This is just a test to make sure images are being read correctly on your machine. Please replace
@@ -55,23 +57,42 @@ public class GUI extends JFrame implements ActionListener, MouseListener, MouseM
     //   // System.out.println(card);
 	//   JPanel newPanel = new JPanel();
 	//   card.setPreferredSize(new Dimension(200, 200));
-	  //newPanel.add(card);
-	//   newPanel.setPreferredSize(new Dimension(200, 200));
-	//   newPanel.setSize(200, 200);
-	//   newPanel.setBorder(BorderFactory.createMatteBorder(2, 2, 2,2, Color.BLUE ));
+
+		JPanel gameArea = new JPanel();
+		gameArea.setSize(new Dimension(800,600));
+		gameArea.setOpaque(false);
+		gameArea.setBorder(BorderFactory.createMatteBorder(2,2,2,2, Color.BLUE));
+		gameArea.setLayout(new GridBagLayout());
 
 
-	JButton button1 = new JButton("Button 1");
-	JButton button2 = new JButton("Button 2");
-	JButton button3 = new JButton("Button 3");
-	JButton button4 = new JButton("Button 4");
-	JButton button5 = new JButton("Button 5");
-    this.add(button1);    
-	this.add(button2);    
-	this.add(button3);    
-	this.add(button4);    
-	this.add(button5);    
+		JButton button1 = new JButton("Button 1");
+		JButton button2 = new JButton("Button 2");
+		JButton button3 = new JButton("Button 3");
+		JButton button4 = new JButton("Button 4");
+		JButton button5 = new JButton("Button 5");
+		GridBagConstraints constraints = new GridBagConstraints();
+		constraints.anchor = GridBagConstraints.NORTHWEST;
+		constraints.fill = GridBagConstraints.HORIZONTAL;
+		constraints.weightx=1;
+		constraints.weighty=1;
+		constraints.gridx = 0;
+		constraints.gridy = 0;
+		constraints.gridwidth = 1;
+		constraints.gridheight = 1;
+		gameArea.add(button1, constraints);
+		constraints.gridx = 1;   
+		gameArea.add(button2, constraints);    
+		constraints.gridx = 2;
+		gameArea.add(button3, constraints);    
 
+		constraints.gridx = 0;
+		constraints.gridy = 1;		
+		gameArea.add(button4,constraints);    
+		constraints.gridx = 1;
+		constraints.gridwidth = 2;
+		gameArea.add(button5, constraints);    
+
+		this.getContentPane().add(gameArea);
         this.setVisible(true);
     }
 
